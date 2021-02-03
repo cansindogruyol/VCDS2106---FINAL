@@ -1,0 +1,157 @@
+/*
+Cansin Dogruyol
+
+Creative Coding Fall2020 @Yasar University VCD
+
+Instructor: Ceren Kayalar
+
+Brief: Creating a code with the techniques we have learned in the classroom and used in our homework.
+
+Technical Info: I used the sound library and sceen switching technology.
+
+Additional Resources:
+Images were prepared with Adobe programs and belong to me.
+https://p5js.org/examples/sound-load-and-play-sound.html
+https://p5js.org/reference/#/p5/key
+
+Inspirations:
+https://editor.p5js.org/hosken/sketches/m1j3x42xF
+
+Github Pages Link:
+https://github.com/cansindogruyol
+
+*/
+
+let scene0, scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10, scene11;
+let screen;
+let type;
+let song, song1;
+
+function preload() {
+
+  scene0 = loadImage("files/scene0.jpg");
+  scene1 = loadImage("files/scene1.jpg");
+  scene2 = loadImage("files/scene2.jpg");
+  scene3 = loadImage("files/scene3.jpg");
+  scene4 = loadImage("files/scene4.jpg");
+  scene5 = loadImage("files/scene5.jpg");
+  scene6 = loadImage("files/scene6.jpg");
+  scene7 = loadImage("files/scene7.jpg");
+  scene8 = loadImage("files/scene8.jpg");
+  scene9 = loadImage("files/scene9.jpg");
+  scene10 = loadImage("files/scene10.jpg");
+  scene11 = loadImage("files/scene11.jpg");
+  song = loadSound('files/music1.mp3');
+  song1 = loadSound('files/music2.mp3');
+
+}
+
+function setup() {
+
+  let cnv =  createCanvas(900,900);
+  cnv.position(windowWidth/2 - cnv. width/2 , windowHeight/2 - cnv. height/2);
+  noStroke();
+  smooth();
+  background('BLACK');
+  type = "";
+  screen = 0;
+
+}
+
+function draw() {
+
+  if (screen == 0) {
+    image(scene0, 0, 0);
+  if (type == "start")
+    screen == 1;
+  }
+
+  if (screen == 1) {
+    image(scene1, 0, 0);
+    if (type == "iloveyou")
+    screen == 2;
+  }
+
+  if (screen == 2) {
+    image(scene2, 0, 0);
+    if (mouseIsPressed) {
+      screen = 3;
+    }
+  }
+
+  if (screen == 3) {
+    image(scene3, 0, 0);
+    if (type == "hot")
+    screen == 4;
+    if (type == "cold")
+    screen == 8;
+  }
+
+  if (screen == 4) {
+    image(scene4, 0, 0);
+    if (type == "family")
+    screen == 5;
+  }
+
+  if (screen == 5) {
+    image(scene5, 0, 0);
+    if (type == "thirty")
+    screen == 6;
+  }
+
+  if (screen == 6) {
+    image(scene6, 0, 0);
+    if (type == "three")
+    screen == 7;
+  }
+
+  if (screen == 7) {
+    image(scene7, 0, 0);
+    song1.play();
+  }
+
+  if (screen == 8) {
+    image(scene8, 0, 0);
+    if (type == "loneliness")
+    screen == 9;
+  }
+
+  if (screen == 9) {
+    image(scene9, 0, 0);
+    if (type == "nine")
+    screen == 10;
+  }
+
+  if (screen == 10) {
+    image(scene10, 0, 0);
+    if (type == "one")
+    screen == 11;
+  }
+
+  if (screen == 11) {
+    image(scene11, 0, 0);
+    song.play();
+  }
+
+}
+
+function keyTyped() {
+
+  if (key >= 'a' && key <='z') type += key;
+
+}
+
+function keyPressed() {
+  if (type == "start" && keyCode == ENTER) { screen = 1; type = ""};
+  if (type == "iloveyou" && keyCode == ENTER) { screen = 2; type = ""};
+  if (type == "hot" && keyCode == ENTER) { screen = 4; type = ""};
+  if (type == "family" && keyCode == ENTER) { screen = 5; type = ""};
+  if (type == "thirty" && keyCode == ENTER) { screen = 6; type = ""};
+  if (type == "three" && keyCode == ENTER) { screen = 7; type = ""};
+  if (type == "cold" && keyCode == ENTER) { screen = 8; type = ""};
+  if (type == "loneliness" && keyCode == ENTER) { screen = 9; type = ""};
+  if (type == "nine" && keyCode == ENTER) { screen = 10; type = ""};
+  if (type == "one" && keyCode == ENTER) { screen = 11; type = ""};
+  if (keyCode== BACKSPACE) {type = ""};
+
+}
